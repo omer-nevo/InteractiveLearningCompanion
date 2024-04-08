@@ -226,8 +226,8 @@ with st.sidebar:
     uploaded_files = os.listdir(TEMP_DIR)
     selected_file = st.selectbox("Select a file to analyze:", uploaded_files)
 
-genai.configure(api_key='AIzaSyAu4l8q5uUAaE0A6697gKkwlckIfjp-69M')
-API_KEY = 'AIzaSyAu4l8q5uUAaE0A6697gKkwlckIfjp-69M'
+genai.configure(api_key='')
+API_KEY = ''
 model = ChatGoogleGenerativeAI(model="gemini-pro",
                                google_api_key=API_KEY, convert_system_message_to_human=True,
                                temperature=0.4)
