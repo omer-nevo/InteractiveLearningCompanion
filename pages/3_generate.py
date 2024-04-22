@@ -1,3 +1,5 @@
+__import__('pysqlite3')
+import sys
 import os
 import streamlit as st
 import fitz  # PyMuPDF
@@ -17,6 +19,8 @@ from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import uuid
+
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 st.set_page_config(page_title="AskMe", layout="wide")
 # st.title("📘 Lets Study!")
