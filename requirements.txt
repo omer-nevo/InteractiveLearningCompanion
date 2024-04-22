@@ -4,6 +4,5 @@ frontend
 PyPDF2
 langchain
 langchain_google_genai
-chromadb
-sqlite3 
+chromadb 
 langchain-community
