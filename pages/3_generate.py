@@ -78,7 +78,6 @@ def change_upload_img_state():
 def reformat_output(output):
     # this function will separate the output to question,answers,correct format
     output = output.replace("*", "")
-    print(output)
     index_after_q_mark = output.find('?') + 1
     index_before_correct = output.find('Correct')
     index_before_answer = output.find('Answer')
