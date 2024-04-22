@@ -6,4 +6,3 @@ langchain
 langchain_google_genai
 chromadb 
 langchain-community
-sqlite>=3.35.0
