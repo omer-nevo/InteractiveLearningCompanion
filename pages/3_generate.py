@@ -231,8 +231,6 @@ with st.sidebar:
 
 genai.configure(api_key= st.secrets['API_KEY'])
 API_KEY = st.secrets['API_KEY']
-print('API KEY')
-print(API_KEY)
 model = ChatGoogleGenerativeAI(model="gemini-pro",
                                google_api_key=API_KEY, convert_system_message_to_human=True,
                                temperature=0.4)
