@@ -2,3 +2,4 @@ google-generativeai
 pymupdf 
 frontend
 PyPDF2
+langchain
