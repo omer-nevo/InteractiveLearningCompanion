@@ -237,7 +237,7 @@ model = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest",
 vision_model = ChatGoogleGenerativeAI(model="gemini-pro-vision", google_api_key=API_KEY)
 
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=API_KEY)
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest", convert_system_message_to_human=True, google_api_key=API_KEY,
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, google_api_key=API_KEY,
                              temperature=0.4, safety_config="BLOCK_ONLY_HIGH")
 memory = ConversationEntityMemory(llm=llm)
 conversation = ConversationChain(llm=llm, prompt=ENTITY_MEMORY_CONVERSATION_TEMPLATE, memory=memory)
