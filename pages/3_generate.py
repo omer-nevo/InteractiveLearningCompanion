@@ -233,7 +233,7 @@ genai.configure(api_key= st.secrets['API_KEY'])
 API_KEY = st.secrets['API_KEY']
 model = ChatGoogleGenerativeAI(model="gemini-pro",
                                google_api_key=API_KEY, convert_system_message_to_human=True,
-                               temperature=0.4)
+                               temperature=0.4, safety_config="BLOCK_ONLY_HIGH")
 vision_model = ChatGoogleGenerativeAI(model="gemini-pro-vision", google_api_key=API_KEY)
 
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=API_KEY)
