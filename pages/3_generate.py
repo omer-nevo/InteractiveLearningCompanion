@@ -238,7 +238,11 @@ vision_model = ChatGoogleGenerativeAI(model="gemini-pro-vision", google_api_key=
 
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=API_KEY)
 llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, google_api_key=API_KEY,
-                             temperature=0.4)
+                             temperature=0.4, safety_config="BLOCK_ONLY_HIGH")
+safety_config = SafetyConfig(
+    block_level=2,  # 2 corresponds to BLOCK_NONE
+    block_prob_threshold=0.0,  # Set the block probability threshold to 0.0
+)
 memory = ConversationEntityMemory(llm=llm)
 conversation = ConversationChain(llm=llm, prompt=ENTITY_MEMORY_CONVERSATION_TEMPLATE, memory=memory)
 question = None
