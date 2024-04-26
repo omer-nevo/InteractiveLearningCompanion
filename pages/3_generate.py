@@ -1,5 +1,3 @@
-__import__('pysqlite3')
-import sys
 import os
 import streamlit as st
 import fitz  # PyMuPDF
@@ -15,12 +13,10 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from google.generativeai.types import StopCandidateException
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.chains import ConversationChain
-from langchain_community.vectorstores import Chroma
+from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-import uuid
 
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 st.set_page_config(page_title="AskMe", layout="wide")
 # st.title("📘 Lets Study!")
@@ -32,7 +28,6 @@ ANSWER_LEN = 7
 # Define a session_state variable to store the extracted text
 if 'fulltext' not in st.session_state:
     st.session_state['fulltext'] = ""
-
 if 'question' not in st.session_state:
     st.session_state['question'] = ""
 if 'generate_question' not in st.session_state:
@@ -229,16 +224,18 @@ with st.sidebar:
     uploaded_files = os.listdir(TEMP_DIR)
     selected_file = st.selectbox("Select a file to analyze:", uploaded_files)
 
-genai.configure(api_key= st.secrets['API_KEY'])
-API_KEY = st.secrets['API_KEY']
-model = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest",
+API_KEY = 'Enter API KEY here'
+genai.configure(api_key = API_KEY)
+
+
+model = ChatGoogleGenerativeAI(model="gemini-pro",
                                google_api_key=API_KEY, convert_system_message_to_human=True,
-                               temperature=0.4, safety_config="BLOCK_ONLY_HIGH")
+                               temperature=0.4)
 vision_model = ChatGoogleGenerativeAI(model="gemini-pro-vision", google_api_key=API_KEY)
 
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=API_KEY)
 llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, google_api_key=API_KEY,
-                             temperature=0.4, safety_config="BLOCK_ONLY_HIGH")
+                             temperature=0.4)
 memory = ConversationEntityMemory(llm=llm)
 conversation = ConversationChain(llm=llm, prompt=ENTITY_MEMORY_CONVERSATION_TEMPLATE, memory=memory)
 question = None
