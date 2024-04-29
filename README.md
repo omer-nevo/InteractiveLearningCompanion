@@ -9,11 +9,12 @@ This approach ensures that learners actively participate in their education, ena
 ### How to activate:
 In order to activate, we have created an anaconda environment with all the dependencies.
 1. Pull the files by their original locations
-2. Inside pages folder, in 3_generate.py , look for "API_KEY = 'Enter API KEY here'" and replace the string with your google API key
-3. Download anaconda 
-4. Enter anaconda powershell
-5. go to the folder of InteractiveSystemProject using cd commands
-6. Write:
+2. Inside pages folder, in 3_generate.py , look for "API_KEY = 'Enter API KEY here'" and replace the string with your google API key 
+   https://ai.google.dev/gemini-api/docs/api-key?hl=he
+4. Download anaconda 
+5. Enter anaconda powershell
+6. go to the folder of InteractiveSystemProject using cd commands
+7. Write:
      1. conda env create -f sysenv.yml
      2. conda activate sysenv
      3. streamlit run streamlit_app.py
